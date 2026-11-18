@@ -1,0 +1,238 @@
+{
+  "site": {
+    "pill": "Creative design and digital marketing",
+    "name": "Eranga Perera",
+    "tagline": "Senior creative designer and visual storyteller",
+    "location": "Sri Lanka",
+    "aboutHeading": "Turning business goals into visuals that work.",
+    "aboutText": "I’m a senior creative designer leading e-commerce and digital marketing creative, with a background in newspaper layout and years of freelance branding. I design campaigns, identities and digital experiences that are clear, premium and built to drive action.",
+    "portrait": "assets/eranga.jpg",
+    "cv": "assets/Eranga-Perera-CV.pdf",
+    "whatsapp": "https://wa.me/94XXXXXXXXX",
+    "email": "YOUR-EMAIL@example.com",
+    "linkedin": "https://www.linkedin.com/in/YOUR-HANDLE",
+    "behance": "https://www.behance.net/YOUR-HANDLE",
+    "instagram": "https://www.instagram.com/YOUR-HANDLE",
+    "quoteHeading": "I don’t decorate. I make ideas clear enough to act on.",
+    "quoteText": "Every layout starts with the audience, the offer and the next step.",
+    "ctaText": "Tell me what you’re building, who it’s for and when you need it. I’ll reply with questions and a plan."
+  },
+  "stats": [
+    {
+      "title": "10 years",
+      "text": "Designing professionally, since 2016"
+    },
+    {
+      "title": "Senior",
+      "text": "Creative designer at Abans PLC"
+    },
+    {
+      "title": "E-commerce",
+      "text": "Campaigns, banners and ads"
+    },
+    {
+      "title": "Branding",
+      "text": "Identity, motion and UI"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Project title",
+      "cat": "E-commerce",
+      "desc": "Campaign key visual and banner set.",
+      "img": "assets/project-01.jpg",
+      "brief": "Add details here.",
+      "role": "Add details here.",
+      "result": "Add details here."
+    },
+    {
+      "title": "Project title",
+      "cat": "Branding",
+      "desc": "Logo and identity system.",
+      "img": "assets/project-02.jpg",
+      "brief": "Add details here.",
+      "role": "Add details here.",
+      "result": "Add details here."
+    },
+    {
+      "title": "Project title",
+      "cat": "Social",
+      "desc": "Social content series.",
+      "img": "assets/project-03.jpg",
+      "brief": "Add details here.",
+      "role": "Add details here.",
+      "result": "Add details here."
+    },
+    {
+      "title": "Project title",
+      "cat": "E-commerce",
+      "desc": "Offer and promotion UI.",
+      "img": "assets/project-04.jpg",
+      "brief": "Add details here.",
+      "role": "Add details here.",
+      "result": "Add details here."
+    },
+    {
+      "title": "Project title",
+      "cat": "Motion",
+      "desc": "Promo video and motion graphics.",
+      "img": "assets/project-05.jpg",
+      "brief": "Add details here.",
+      "role": "Add details here.",
+      "result": "Add details here."
+    },
+    {
+      "title": "Project title",
+      "cat": "Web and UI",
+      "desc": "Landing page concept.",
+      "img": "assets/project-06.jpg",
+      "brief": "Add details here.",
+      "role": "Add details here.",
+      "result": "Add details here."
+    }
+  ],
+  "gallery": [
+    {
+      "title": "Project title",
+      "cat": "Social",
+      "img": "assets/reel-01.jpg",
+      "brief": "Add details here.",
+      "role": "Add details here.",
+      "result": "Add details here."
+    },
+    {
+      "title": "Project title",
+      "cat": "Campaign",
+      "img": "assets/reel-02.jpg",
+      "brief": "Add details here.",
+      "role": "Add details here.",
+      "result": "Add details here."
+    },
+    {
+      "title": "Project title",
+      "cat": "Social",
+      "img": "assets/reel-03.jpg",
+      "brief": "Add details here.",
+      "role": "Add details here.",
+      "result": "Add details here."
+    },
+    {
+      "title": "Project title",
+      "cat": "Branding",
+      "img": "assets/reel-04.jpg",
+      "brief": "Add details here.",
+      "role": "Add details here.",
+      "result": "Add details here."
+    },
+    {
+      "title": "Project title",
+      "cat": "Campaign",
+      "img": "assets/reel-05.jpg",
+      "brief": "Add details here.",
+      "role": "Add details here.",
+      "result": "Add details here."
+    },
+    {
+      "title": "Project title",
+      "cat": "Social",
+      "img": "assets/reel-06.jpg",
+      "brief": "Add details here.",
+      "role": "Add details here.",
+      "result": "Add details here."
+    }
+  ],
+  "experience": [
+    {
+      "title": "Senior Creative Designer",
+      "sub": "Abans PLC, E-commerce and Digital Marketing | 2022 to now",
+      "desc": "Campaign creative for BuyAbans.com: digital advertising, website banners, product promotions and social content."
+    },
+    {
+      "title": "Graphic Designer and Layout Artist",
+      "sub": "Wijeya Newspapers Ltd | 2017 to 2022",
+      "desc": "Publication design, page layout and graphic design for print."
+    },
+    {
+      "title": "Freelance Creative Designer",
+      "sub": "Independent | 2016 to now",
+      "desc": "Branding, advertising and promotional design across hospitality, real estate, beauty and retail."
+    }
+  ],
+  "software": [
+    "Photoshop",
+    "Illustrator",
+    "DaVinci Resolve",
+    "CapCut"
+  ],
+  "aiTools": [
+    "Midjourney",
+    "Gemini",
+    "Freepik",
+    "Magnific AI",
+    "Notion",
+    "GitHub"
+  ],
+  "brands": [
+    "Apple",
+    "LG",
+    "BOSS",
+    "Under Armour",
+    "Skechers",
+    "Titan",
+    "Haier",
+    "HP",
+    "Philips",
+    "JBL"
+  ],
+  "services": [
+    {
+      "title": "Brand identity",
+      "text": "Logo systems, guidelines and mockups that hold up across every touchpoint."
+    },
+    {
+      "title": "E-commerce campaigns",
+      "text": "Key visuals, banners and offer graphics built for clarity and conversion."
+    },
+    {
+      "title": "Social and paid ads",
+      "text": "Creative planned around the audience, the offer and the action you want."
+    },
+    {
+      "title": "Motion and video",
+      "text": "Promo edits and motion graphics that carry a campaign past the still frame."
+    },
+    {
+      "title": "Web and UI concepts",
+      "text": "Website planning and interface concepts, from first layout to a working page."
+    }
+  ],
+  "voices": [
+    {
+      "q": "Add a real testimonial from a client or colleague here.",
+      "n": "Name",
+      "r": "Role, Company"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What do you offer?",
+      "a": "Brand identity, e-commerce campaign creative, social and paid-ad creative, motion and video, and web and UI concepts."
+    },
+    {
+      "q": "Can you help with social media content?",
+      "a": "Yes. I plan and design content series around your audience, offer and goal, and adapt them for each platform."
+    },
+    {
+      "q": "How does your process work?",
+      "a": "I start with the objective, audience and offer, then move through concept, design, review and final delivery in the sizes you need."
+    },
+    {
+      "q": "How long does a project take?",
+      "a": "It depends on scope. Share your deadline and what you need, and I’ll confirm what’s realistic before we begin."
+    },
+    {
+      "q": "How do we get started?",
+      "a": "Message me on WhatsApp or email with a short brief. I’ll reply with questions and a proposed plan for your approval."
+    }
+  ]
+}
