@@ -87,13 +87,13 @@ button.card{text-align:left;padding:0;display:block;width:100%}
 .tabs{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:28px}
 .tabs button{border:1px solid var(--line);border-radius:99px;background:none;padding:7px 16px;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
 .tabs button[aria-pressed="true"]{background:var(--ink);color:#000;border-color:var(--ink)}
-.gal{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px calc(50% - 130px);scrollbar-width:none}
+:root{--gallery-card-width:clamp(220px,22vw,260px)}
+.gal{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;padding:20px max(16px,calc((100% - var(--gallery-card-width))/2));scrollbar-width:none}
 .gal::-webkit-scrollbar{display:none}
-.gi{flex:0 0 clamp(220px,22vw,260px);scroll-snap-align:center;padding:0;border:0;background:none}
+.gi{flex:0 0 var(--gallery-card-width);scroll-snap-align:center;scroll-snap-stop:always;padding:0;border:0;background:none;opacity:.58;transform:scale(.88);transform-origin:center;transition:opacity .35s,transform .35s}
+.gi.is-active{opacity:1;transform:scale(1)}
 .gi .frame{aspect-ratio:9/16;border-radius:20px;border:1px solid var(--line)}
 .gi small{display:block;margin-top:10px;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);text-align:left}
-@supports(animation-timeline:view(inline)){.gi{animation:cf linear both;animation-timeline:view(inline);animation-range:cover 0% cover 100%}
- @keyframes cf{0%,100%{transform:scale(.82);opacity:.45}50%{transform:scale(1);opacity:1}}}
 .ar{display:flex;justify-content:center;gap:10px;margin-top:8px}
 .ar button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:none}.ar button:hover{background:var(--ink);color:#000}
 
@@ -277,9 +277,24 @@ function init(C){
  function rg(){const l=gallery.map((g,i)=>[g,i]).filter(([g])=>tab==='All'||g.cat===tab);
   $('#gal').innerHTML=l.map(([g,i])=>`<button class="gi" data-s="g" data-i="${i}" aria-haspopup="dialog">${fr(g)}<small>${esc(g.cat)}</small></button>`).join('');
   $('#tabs').innerHTML=cats.map(c=>`<button type="button" aria-pressed="${c===tab}" data-c="${esc(c)}">${esc(c)}</button>`).join('');hook($('#gal'))}
- $('#tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(b){tab=b.dataset.c;rg()}});rg();
- const gl=$('#gal'),st=()=>Math.round(gl.clientWidth*.5);
- $('#next').onclick=()=>gl.scrollBy({left:st(),behavior:'smooth'});$('#prev').onclick=()=>gl.scrollBy({left:-st(),behavior:'smooth'});
+ const gl=$('#gal');
+ const galleryItems=()=>Array.from(gl.querySelectorAll('.gi'));
+ const centerGalleryItem=(index,smooth=true)=>{
+  const items=galleryItems(),item=items[index];if(!item)return;
+  const left=item.getBoundingClientRect().left-gl.getBoundingClientRect().left+gl.scrollLeft;
+  gl.scrollTo({left:left-(gl.clientWidth-item.clientWidth)/2,behavior:smooth?'smooth':'auto'});
+  items.forEach((el,i)=>el.classList.toggle('is-active',i===index));
+ };
+ const nearestGalleryIndex=()=>{
+  const items=galleryItems(),mid=gl.getBoundingClientRect().left+gl.clientWidth/2;
+  return items.reduce((best,item,i)=>Math.abs(item.getBoundingClientRect().left+item.clientWidth/2-mid)<Math.abs(items[best].getBoundingClientRect().left+items[best].clientWidth/2-mid)?i:best,0);
+ };
+ $('#tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(b){tab=b.dataset.c;rg();requestAnimationFrame(()=>centerGalleryItem(0,false))}});
+ let galleryScrollTick=false;
+ gl.addEventListener('scroll',()=>{if(galleryScrollTick)return;galleryScrollTick=true;requestAnimationFrame(()=>{const i=nearestGalleryIndex();galleryItems().forEach((el,n)=>el.classList.toggle('is-active',n===i));galleryScrollTick=false})},{passive:true});
+ $('#next').onclick=()=>centerGalleryItem(Math.min(nearestGalleryIndex()+1,galleryItems().length-1));
+ $('#prev').onclick=()=>centerGalleryItem(Math.max(nearestGalleryIndex()-1,0));
+ requestAnimationFrame(()=>centerGalleryItem(0,false));
  const dlg=$('#dlg');
  document.addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(!b)return;const p=(b.dataset.s==='p'?projects:gallery)[b.dataset.i];
   $('#dt').textContent=p.title;$('#dm').innerHTML=fr(p);
