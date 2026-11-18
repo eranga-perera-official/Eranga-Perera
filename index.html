@@ -256,6 +256,46 @@ footer{border-color:#201b18;font-size:.68rem}
 @media(max-width:760px){.cv{grid-template-columns:1fr}.about{grid-template-columns:1fr}.about .frame{max-width:360px;width:100%;margin:auto}}
 @media(prefers-reduced-motion:reduce){.gi,.pc,.rv{transition:none}}
 
+
+/* Motion direction: cinematic reveals, layered gallery and restrained orange energy */
+html{scroll-behavior:smooth}
+body{background:#030303}
+.hero{isolation:isolate;overflow:hidden}
+.hero:after{content:"";position:absolute;z-index:-1;inset:18% 12% 8%;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,rgba(255,75,18,.13),transparent 62%);filter:blur(22px);animation:heroGlow 7s ease-in-out infinite alternate}
+@keyframes heroGlow{from{opacity:.45;transform:scale(.92)}to{opacity:1;transform:scale(1.08)}}
+.hero .pill{animation:riseIn .8s both .2s}
+.hero .tag{animation:riseIn .8s both .9s}
+.hero .scroll{animation:riseIn .8s both 1.2s}
+@keyframes riseIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.sh .pill{display:inline-block;animation:labelPulse 3.5s ease-in-out infinite}
+@keyframes labelPulse{0%,100%{box-shadow:0 0 0 rgba(255,75,18,0)}50%{box-shadow:0 0 18px rgba(255,75,18,.13)}}
+.pc .frame img,.gi .frame img,.about .frame img{transition:transform 1s cubic-bezier(.2,.8,.2,1),filter .7s}
+.pc:hover .frame img,.gi:hover .frame img{transform:scale(1.055);filter:saturate(1.12)}
+.pc{transition:transform .55s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .4s}
+.pc:hover{box-shadow:0 16px 55px rgba(255,75,18,.08)}
+.sv{transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .35s,background .35s}
+.sv:hover{transform:translateY(-7px);border-color:#63301f;background:linear-gradient(145deg,#17100d,#090909)}
+.sv:hover svg{transform:translateY(-3px) rotate(-5deg)}
+.sv svg{transition:transform .45s}
+.gal{perspective:1200px;touch-action:pan-x pan-y;cursor:grab;scroll-snap-type:x mandatory}
+.gal:active{cursor:grabbing}
+.gi{transform-style:preserve-3d;will-change:transform,opacity;transition:transform .65s cubic-bezier(.2,.8,.2,1),opacity .5s,filter .5s}
+.gi.is-active{z-index:3}
+.gi:not(.is-active){filter:saturate(.68)}
+.gi .frame{box-shadow:0 18px 50px rgba(0,0,0,.35)}
+.ar button{transition:background .25s,transform .25s,border-color .25s}
+.ar button:hover{transform:translateY(-2px);background:var(--acc);border-color:var(--acc);color:white}
+.brands{position:relative}
+.brands:before,.brands:after{content:"";position:absolute;top:0;bottom:0;width:10%;z-index:2;pointer-events:none}
+.brands:before{left:0;background:linear-gradient(90deg,#050505,transparent)}
+.brands:after{right:0;background:linear-gradient(270deg,#050505,transparent)}
+.quote h2{animation:quoteGlow 5s ease-in-out infinite alternate}
+@keyframes quoteGlow{from{text-shadow:0 0 0 rgba(255,75,18,0)}to{text-shadow:0 0 28px rgba(255,75,18,.16)}}
+.cta .btn.solid{box-shadow:0 0 0 0 rgba(255,75,18,.35);animation:ctaPulse 2.8s infinite}
+@keyframes ctaPulse{0%{box-shadow:0 0 0 0 rgba(255,75,18,.28)}70%{box-shadow:0 0 0 13px rgba(255,75,18,0)}100%{box-shadow:0 0 0 0 rgba(255,75,18,0)}}
+@media(max-width:620px){.gal{perspective:900px}.gi{transform-origin:center}.hero:after{inset:20% 2% 8%}}
+@media(prefers-reduced-motion:reduce){.hero:after,.sh .pill,.quote h2,.cta .btn.solid{animation:none!important}}
+
 </style>
 <noscript><style>#loader{display:none}.hero h1 span{transform:none}.rv{opacity:1;transform:none}body:not(.loaded){overflow:auto}</style></noscript>
 </head>
@@ -375,11 +415,15 @@ function init(C){
   $('#tabs').innerHTML=cats.map(c=>`<button type="button" aria-pressed="${c===tab}" data-c="${esc(c)}">${esc(c)}</button>`).join('');hook($('#gal'))}
  const gl=$('#gal');
  const galleryItems=()=>Array.from(gl.querySelectorAll('.gi'));
+ const applyGalleryDepth=()=>{
+  const items=galleryItems(),mid=gl.getBoundingClientRect().left+gl.clientWidth/2;
+  items.forEach((el)=>{const delta=(el.getBoundingClientRect().left+el.clientWidth/2-mid)/Math.max(1,el.clientWidth);const d=Math.max(-2.5,Math.min(2.5,delta));const scale=Math.max(.76,1-Math.abs(d)*.105);const opacity=Math.max(.22,1-Math.abs(d)*.34);el.style.transform='perspective(1000px) rotateY('+(-d*23)+'deg) scale('+scale+') translateZ('+(-Math.abs(d)*34)+'px)';el.style.opacity=String(opacity);el.style.zIndex=String(20-Math.round(Math.abs(d)*4));el.classList.toggle('is-active',Math.abs(d)<.52)});
+ };
  const centerGalleryItem=(index,smooth=true)=>{
   const items=galleryItems(),item=items[index];if(!item)return;
   const left=item.getBoundingClientRect().left-gl.getBoundingClientRect().left+gl.scrollLeft;
   gl.scrollTo({left:left-(gl.clientWidth-item.clientWidth)/2,behavior:smooth?'smooth':'auto'});
-  items.forEach((el,i)=>el.classList.toggle('is-active',i===index));
+  requestAnimationFrame(applyGalleryDepth);
  };
  const nearestGalleryIndex=()=>{
   const items=galleryItems(),mid=gl.getBoundingClientRect().left+gl.clientWidth/2;
@@ -387,7 +431,9 @@ function init(C){
  };
  $('#tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(b){tab=b.dataset.c;rg();requestAnimationFrame(()=>centerGalleryItem(0,false))}});
  let galleryScrollTick=false;
- gl.addEventListener('scroll',()=>{if(galleryScrollTick)return;galleryScrollTick=true;requestAnimationFrame(()=>{const i=nearestGalleryIndex();galleryItems().forEach((el,n)=>el.classList.toggle('is-active',n===i));galleryScrollTick=false})},{passive:true});
+ gl.addEventListener('scroll',()=>{if(galleryScrollTick)return;galleryScrollTick=true;requestAnimationFrame(()=>{applyGalleryDepth();galleryScrollTick=false})},{passive:true});
+ gl.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();centerGalleryItem(Math.min(nearestGalleryIndex()+1,galleryItems().length-1))}if(e.key==='ArrowLeft'){e.preventDefault();centerGalleryItem(Math.max(nearestGalleryIndex()-1,0))}});
+ let galleryResize;window.addEventListener('resize',()=>{clearTimeout(galleryResize);galleryResize=setTimeout(()=>centerGalleryItem(nearestGalleryIndex(),false),120)});
  $('#next').onclick=()=>centerGalleryItem(Math.min(nearestGalleryIndex()+1,galleryItems().length-1));
  $('#prev').onclick=()=>centerGalleryItem(Math.max(nearestGalleryIndex()-1,0));
  requestAnimationFrame(()=>centerGalleryItem(0,false));
@@ -398,7 +444,7 @@ function init(C){
  $('#x').onclick=()=>dlg.close();dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
  hook(document);
  const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
- document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+ document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i%4,3)*90)+'ms';io.observe(el)});
  $('#yr').textContent=new Date().getFullYear();
 }
 </script>
