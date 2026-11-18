@@ -296,21 +296,112 @@ body{background:#030303}
 @media(max-width:620px){.gal{perspective:900px}.gi{transform-origin:center}.hero:after{inset:20% 2% 8%}}
 @media(prefers-reduced-motion:reduce){.hero:after,.sh .pill,.quote h2,.cta .btn.solid{animation:none!important}}
 
+
+/* Detailed reference match: restrained editorial portfolio system */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Caveat:wght@700&display=swap');
+:root{--head:'Barlow Condensed','Archivo',Impact,sans-serif;--acc:#ff5722;--bg:#030303;--card:#080808;--line:#202020;--mute:#999}
+body{background:#030303}
+.nav{inset:0 0 auto;left:0;transform:none;width:100%;height:66px;border:0;border-bottom:1px solid #171717;border-radius:0;padding:0 max(24px,calc((100vw - 980px)/2));display:flex;justify-content:center;align-items:center;gap:28px;background:rgba(3,3,3,.88);backdrop-filter:blur(18px)}
+.nav a{font:500 .68rem var(--body);letter-spacing:.22em;text-transform:uppercase;padding:22px 0 18px;border-radius:0;background:none!important;color:#8d8d8d;position:relative}
+.nav a:after{content:"";position:absolute;bottom:12px;left:0;right:100%;height:1px;background:var(--acc);transition:right .3s}
+.nav a:hover,.nav a.cta{color:#fff}
+.nav a:hover:after,.nav a.cta:after{right:0}
+.nav a.cta{margin-left:clamp(20px,8vw,100px);border:1px solid #292929;border-radius:30px;padding:9px 18px}
+.nav a.cta:after{display:none}
+.nav .nav-cv{width:34px;height:34px;padding:0;border:1px solid #292929;border-radius:50%;display:grid;place-items:center;font-size:1rem}
+.nav .nav-cv:after{display:none}
+@media(max-width:620px){.nav{height:58px;gap:16px;padding:0 12px}.nav a{font-size:.56rem;letter-spacing:.12em}.nav a.cta{margin-left:0;padding:8px 11px}.nav .nav-cv{display:none}}
+.hero{min-height:100svh;padding:120px 24px 92px;justify-content:center;background-color:#030303;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px),radial-gradient(42% 35% at 50% 47%,rgba(255,77,26,.12),transparent 78%);background-size:72px 72px,72px 72px,auto}
+.hero:before{content:"THE DESIGNER";font:700 clamp(1.1rem,2.5vw,2rem) 'Caveat',cursive;color:var(--acc);letter-spacing:.015em;transform:rotate(-4deg);margin:0 0 -3px;z-index:2}
+.hero:after{inset:20% 18% 15%;background:radial-gradient(ellipse,rgba(255,75,18,.09),transparent 65%);filter:blur(28px)}
+.hero .pill{border-color:#34302d;background:#080808;color:#c6c1bd;font-size:.58rem;letter-spacing:.25em;padding:7px 15px}
+.hero h1{font-size:clamp(5rem,14vw,12rem);font-weight:800;letter-spacing:-.035em;line-height:.82;margin:16px 0 28px;text-shadow:0 8px 55px rgba(255,255,255,.07)}
+.hero h1 span{white-space:nowrap}
+.hero .tag{font-size:.7rem;letter-spacing:.25em}
+.hero .tag:first-of-type{color:#d7d2ce}
+.hero .tag:last-of-type{font-size:.58rem;color:#79736f;letter-spacing:.2em}
+.hero .btn{margin-top:16px}
+.hero .scroll{margin-top:22px;width:38px;height:38px;border:1px solid #333;border-radius:50%;display:grid;place-items:center}
+.hero .scroll:after{content:"↓";position:static;transform:none;animation:none;width:auto;height:auto;background:none;color:#fff;font-size:1rem}
+.hero-meta{position:absolute;bottom:30px;left:var(--pad);right:var(--pad);display:flex;justify-content:space-between;color:#666;font:500 .55rem var(--body);letter-spacing:.22em}
+@media(max-width:620px){.hero{min-height:90svh}.hero h1{font-size:clamp(4rem,18vw,7rem)}.hero-meta{font-size:.48rem}}
+section{scroll-margin-top:76px}
+.sh{margin-bottom:clamp(38px,5vw,66px)}
+.sh .pill{font-size:.57rem;letter-spacing:.26em;padding:6px 14px}
+.sh h2{font-size:clamp(2.1rem,4.8vw,3.45rem);font-weight:700;letter-spacing:-.015em;margin:17px 0 7px}
+.sh p{font-size:.7rem;letter-spacing:.19em;max-width:56ch}
+.about{max-width:1030px;grid-template-columns:minmax(280px,.9fr) 1.4fr;gap:clamp(32px,5vw,60px)}
+.about .frame{border-radius:12px;border:1px solid #30231e;box-shadow:0 0 55px rgba(255,75,18,.06)}
+.about h2{font-size:clamp(2rem,4vw,3.3rem);line-height:.98;letter-spacing:-.025em;max-width:19ch}
+.about h2 em,.about h2 strong{color:var(--acc)}
+.about p{font-size:.91rem;line-height:1.8;color:#a6a3a0}
+.stats{gap:10px}
+.stat{border-radius:18px;background:#050505;padding:18px 20px}
+.stat b{font:700 1.45rem var(--body);text-transform:none;letter-spacing:-.04em}
+.stat span{font-size:.6rem;letter-spacing:.19em;text-transform:uppercase}
+.pg{gap:18px}
+.pc{border-radius:18px;overflow:hidden;background:#070707}
+.pc .frame{border-radius:0;aspect-ratio:1.25}
+.pc .pb{padding:18px}
+.pc .k{display:inline-block;border:1px solid #303030;border-radius:99px;padding:4px 10px;color:#aaa;font-size:.55rem;letter-spacing:.17em}
+.pc h3{font:700 1.4rem/1.05 var(--head);letter-spacing:.005em}
+.pc p{font-size:.82rem;color:#999;line-height:1.7}
+.pc .open{font-size:.58rem;letter-spacing:.2em}
+.pc:first-child{grid-template-columns:1fr 1fr;border:1px solid #542a1c}
+.pc:first-child .frame{min-height:300px}
+.pc:first-child .pb{padding:clamp(22px,4vw,42px)}
+.pc:first-child h3{font-size:clamp(1.8rem,3vw,2.6rem)}
+@media(max-width:620px){.pg{grid-template-columns:1fr}.pc:first-child{grid-template-columns:1fr}.pc:first-child .frame{min-height:220px}}
+.brands{border-block:1px solid #171717;background:#030303}
+.bt span{color:#56504d;font-family:var(--head);font-weight:700;letter-spacing:.05em}
+#services .wrap{max-width:1030px}
+.sg{grid-template-columns:repeat(6,1fr);gap:14px}
+.sv{grid-column:span 2!important;border-radius:18px;min-height:280px;padding:26px;background:#070707;display:flex;flex-direction:column}
+.sv:nth-child(1){grid-column:span 4!important;display:grid;grid-template-columns:100px 1fr;grid-template-rows:auto auto 1fr;column-gap:28px;align-content:center;min-height:320px}
+.sv:nth-child(1) svg{grid-row:1/4;width:56px;height:56px;align-self:center}
+.sv:before{counter-increment:service;content:"0" counter(service);color:var(--acc);font:600 .65rem var(--body);letter-spacing:.22em;margin-bottom:12px}
+.sg{counter-reset:service}
+.sv:nth-child(1):before{grid-column:2}
+.sv:nth-child(1) h3{grid-column:2}
+.sv:nth-child(1) p{grid-column:2}
+.sv svg{stroke:#e8e5e2;width:30px;height:30px;margin:0 0 28px}
+.sv h3{font:700 1.45rem/1.05 var(--head);margin:0 0 10px}
+.sv p{font-size:.82rem;line-height:1.7;color:#aaa}
+@media(max-width:760px){.sv,.sv:nth-child(1){grid-column:1/-1!important;min-height:unset;display:flex}.sv:nth-child(1) svg{width:30px;height:30px;align-self:flex-start}.sv:nth-child(1):before,.sv:nth-child(1) h3,.sv:nth-child(1) p{grid-column:auto}}
+#voices .tg{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 3px 24px;scrollbar-width:none}
+#voices .tg::-webkit-scrollbar{display:none}
+#voices .tq{flex:0 0 min(360px,80vw);min-height:310px;scroll-snap-align:center;border-radius:18px;padding:28px;background:#070707}
+.tq:before{content:"“";font:700 2.6rem var(--head);color:#45403d;line-height:.7}
+.tq p{font-size:.9rem;line-height:1.8;color:#c3bfbb}
+.tq b{font:600 .85rem var(--body);text-transform:none}
+.tq span{font-size:.72rem}
+#faq .faq{max-width:670px;gap:12px}
+#faq details.card{border-radius:17px;background:#070707}
+#faq summary{font:600 .9rem var(--body);padding:23px 25px}
+#faq details p{font-size:.84rem;line-height:1.8;padding:0 25px 24px}
+#contact{padding:clamp(90px,12vw,160px) 0;background:radial-gradient(35% 45% at 50% 48%,rgba(255,75,18,.075),transparent 80%)}
+.cta h2{font-size:clamp(2.8rem,7vw,5.6rem);letter-spacing:-.035em}
+.cta p{font-size:1rem;line-height:1.7;max-width:58ch}
+.soc{gap:12px;margin:36px 0}
+.soc a{width:46px;height:46px;padding:0;display:grid;place-items:center;border-radius:50%;font-size:.65rem;color:#eee}
+.cta .btn.solid{min-width:min(390px,90vw);justify-content:center;border-radius:99px;padding:16px 24px;font-size:.7rem;letter-spacing:.19em}
+footer{border-color:#171717}
+
 </style>
 <noscript><style>#loader{display:none}.hero h1 span{transform:none}.rv{opacity:1;transform:none}body:not(.loaded){overflow:auto}</style></noscript>
 </head>
 <body>
 <a class="skip" href="#work">Skip to work</a>
 <div id="loader" aria-hidden="true"><b id="count">0</b><i id="bar"></i></div>
-<nav class="nav" aria-label="Main"><a href="#top">Home</a><a href="#work">Work</a><a href="#cv">CV</a><a href="#services">Services</a><a href="#faq">FAQ</a><a class="cta" href="#contact">Contact</a></nav>
+<nav class="nav" aria-label="Main"><a href="#work">Work</a><a href="#services">Services</a><a href="#about">About</a><a href="#contact">Contact</a><a class="cta" href="#contact">● Hire me</a><a class="nav-cv" href="assets/Eranga-Perera-CV.pdf" aria-label="Download CV">↧</a></nav>
 
 <main id="top">
 <div class="hero">
-  <span class="pill" id="h-pill">Creative design and digital marketing</span>
+  <span class="pill hero-kicker" id="h-pill">01 // Independent Creative Designer</span>
   <h1 aria-label="Eranga Perera"><span id="h-name">Eranga Perera</span></h1>
   <p class="tag" id="h-tag">Senior creative designer and visual storyteller</p>
   <p class="tag" id="h-loc">Sri Lanka</p>
-  <div class="scroll" aria-hidden="true"></div>
+  <div class="hero-meta"><span>WADDUWA / SRI LANKA</span><span>PORTFOLIO — 2026</span></div><a class="scroll" href="#work" aria-label="Explore selected work"></a>
 </div>
 
 <section id="about"><div class="wrap about">
@@ -324,7 +415,7 @@ body{background:#030303}
 </div></section>
 
 <section id="work" style="padding-top:0"><div class="wrap">
-  <div class="sh"><span class="pill">Selected work</span><h2>Featured projects</h2><p>A curated selection of campaigns, identities and creative systems</p></div>
+  <div class="sh"><span class="pill">02 // Selected works</span><h2>Featured projects</h2><p>Selected design, campaign and visual communication work</p></div>
   <div class="pg" id="pg"></div>
 </div></section>
 
@@ -352,22 +443,22 @@ body{background:#030303}
 <section class="quote"><div class="wrap rv"><h2 id="q-h"></h2><p id="q-p"></p></div></section>
 
 <section id="services" style="padding-top:0"><div class="wrap">
-  <div class="sh"><span class="pill">Core competencies</span><h2>Services and disciplines</h2><p>From first concept to final delivery</p></div>
+  <div class="sh"><span class="pill">05 // What I do</span><h2>How I can <span style="color:var(--acc)">help</span></h2><p>Tell me what you are making. These are the areas where I can help.</p></div>
   <div class="sg" id="sg"></div>
 </div></section>
 
 <section id="voices" style="padding-top:0"><div class="wrap">
-  <div class="sh"><span class="pill">Kind words</span><h2>Testimonials</h2><p>Recommendations from people I’ve worked with</p></div>
+  <div class="sh"><span class="pill">06 // Kind words</span><h2>Testimonials</h2><p>Recommendations from people I’ve worked with</p></div>
   <div class="tg" id="tg"></div>
 </div></section>
 
 <section id="faq" style="padding-top:0"><div class="wrap">
-  <div class="sh"><span class="pill">Frequently asked</span><h2>Inquiries and FAQs</h2><p>Timelines, process and how we’d work together</p></div>
+  <div class="sh"><span class="pill">07 // Frequently asked</span><h2>Inquiries & FAQs</h2><p>Details regarding timelines, process and creative workflow</p></div>
   <div class="faq" id="fq"></div>
 </div></section>
 
 <section id="contact" class="cta" style="border-top:1px solid var(--line)"><div class="wrap">
-  <span class="pill">Get in touch</span><h2>Let’s collaborate.</h2>
+  <span class="pill">08 // Direct contact</span><h2>Let’s collaborate.</h2>
   <p id="c-p"></p>
   <a class="btn solid" id="c-wa" href="#contact" rel="noopener">Start on WhatsApp</a>
   <div class="soc"><a id="c-em" href="#contact">Email</a><a id="c-li" href="#contact" rel="noopener">LinkedIn</a><a id="c-be" href="#contact" rel="noopener">Behance</a><a id="c-ig" href="#contact" rel="noopener">Instagram</a></div>
